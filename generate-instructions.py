@@ -208,15 +208,15 @@ def generate_instruction_following_data(
             new_instruction_tokens = tokenizer.tokenize(instruction_data_entry["instruction"])
             rouge_scores = bm25Model.get_scores(new_instruction_tokens)
 
-            # 获得相似度最低的10个
-            most_similar_instructions = {
-                all_instructions[i]: rouge_scores[i] for i in np.argsort(rouge_scores)[-10:][::-1]
-            }
             # 相似度太高则不要
             if max(rouge_scores) >18:
                 continue
             else:
                 keep += 1
+            # 获得相似度最低的10个
+            most_similar_instructions = {
+                all_instructions[i]: rouge_scores[i] for i in np.argsort(rouge_scores)[-10:][::-1]
+            }
             # 记录数据
             instruction_data_entry["most_similar_instructions"] = most_similar_instructions
             instruction_data_entry["avg_similarity_score"] = float(np.mean(rouge_scores))

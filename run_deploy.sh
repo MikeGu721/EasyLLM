@@ -16,4 +16,4 @@ python deploy.py \
     --cache_dir $CACHE_DIR \
     --lora_weights $OUTPUT_DIR'/'$DATA_NAME'/'$BASE_MODEL \
     --prompt_templare gzh_prompter \
-    --server_name 10.176.64.186
+    --server_name localhost
