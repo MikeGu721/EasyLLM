@@ -56,6 +56,7 @@ TORCH_CUDA_ARCH_LIST="8.6" DS_BUILD_CPU_ADAM=1 DS_BUILD_UTILS=1 pip install . --
 
 ## Instruction Finetuning
 - 将预训练好的结果拿来做ift：
+- `sh run_convert_megatron_2_hf.sh`
 
 ### SFT
 - 此处的输出带着后缀 not_cleaned，需要人工清洗一下数据，不然数据太脏，直接调用api去迭代生成太浪费钱
@@ -83,5 +84,4 @@ TORCH_CUDA_ARCH_LIST="8.6" DS_BUILD_CPU_ADAM=1 DS_BUILD_UTILS=1 pip install . --
 - Windows不支持分布式，所以Megatron训练里的distributed-backend要设置gloo而不是nccl——但还是有很多地方会有bug，所以再次建议不要在windows上跑预训练
 
 # 待更新
-- 读取Megatron的输出继续做ift
 - 读取其他模型的参数继续做预训练
