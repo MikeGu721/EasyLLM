@@ -1,18 +1,15 @@
-#export BASE_MODEL=decapoda-research/llama-7b-hf
-#export BASE_MODEL=THUDM/glm-10b-chinese
-#export BASE_MODEL=bigscience/bloomz-7b1
-export BASE_MODEL=bigscience/bloomz-560m
+#export BASE_MODEL=bigscience/bloomz-560m
+export BASE_MODEL=./model/pretrained_model/test_weight
 
 export DATA_PATH=./data/instruction_data/ift.data.json
 export DATA_NAME=sft-data
-export CACHE_DIR=./model/download_model
+export CACHE_DIR=NONE
 
 export OUTPUT_DIR=./model/ifted_model
 
 export NUM_GPUS=1
 
-#deepspeed --NUM_GPUS=$NUM_GPUS
-python lora-finetune.py \
+deepspeed --NUM_GPUS=$NUM_GPUS python lora-finetune.py \
     --base_model $BASE_MODEL \
     --data_path $DATA_PATH \
     --output_dir $OUTPUT_DIR'/'$DATA_NAME'/'$BASE_MODEL \
