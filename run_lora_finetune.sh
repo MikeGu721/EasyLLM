@@ -9,7 +9,7 @@ export OUTPUT_DIR=./model/ifted_model
 
 export NUM_GPUS=1
 
-deepspeed --NUM_GPUS=$NUM_GPUS python lora-finetune.py \
+deepspeed --num_gpus=$NUM_GPUS lora-finetune.py \
     --base_model $BASE_MODEL \
     --data_path $DATA_PATH \
     --output_dir $OUTPUT_DIR'/'$DATA_NAME'/'$BASE_MODEL \

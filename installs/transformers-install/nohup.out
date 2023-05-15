@@ -1,0 +1,53 @@
+Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
+Obtaining file:///mnt/nlp-ali/usr/guzhouhong/EasyLLM/installs/transformers-install
+  Installing build dependencies: started
+  Installing build dependencies: still running...
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Installing backend dependencies: started
+  Installing backend dependencies: finished with status 'done'
+    Preparing wheel metadata: started
+    Preparing wheel metadata: finished with status 'done'
+Requirement already satisfied: regex!=2019.12.17 in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (2022.3.15)
+Requirement already satisfied: tqdm>=4.27 in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (4.63.0)
+Requirement already satisfied: pyyaml>=5.1 in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (6.0)
+Requirement already satisfied: numpy>=1.17 in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (1.22.3)
+Collecting huggingface-hub<1.0,>=0.11.0
+  Downloading huggingface_hub-0.14.1-py3-none-any.whl (224 kB)
+Requirement already satisfied: filelock in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (3.6.0)
+Requirement already satisfied: packaging>=20.0 in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (21.3)
+Collecting tokenizers!=0.11.3,<0.14,>=0.11.1
+  Downloading tokenizers-0.13.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (7.8 MB)
+Looking in indexes: https://mirrors-ssl.aliyuncs.com/pypi/simple, https://pypi.ngc.nvidia.com
+Obtaining file:///mnt/nlp-ali/usr/guzhouhong/EasyLLM/installs/transformers-install
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Installing backend dependencies: started
+  Installing backend dependencies: finished with status 'done'
+    Preparing wheel metadata: started
+    Preparing wheel metadata: finished with status 'done'
+Requirement already satisfied: packaging>=20.0 in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (21.3)
+Requirement already satisfied: tqdm>=4.27 in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (4.63.0)
+Requirement already satisfied: pyyaml>=5.1 in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (6.0)
+Requirement already satisfied: filelock in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (3.6.0)
+Requirement already satisfied: numpy>=1.17 in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (1.22.3)
+Collecting huggingface-hub<1.0,>=0.11.0
+  Downloading https://mirrors-ssl.aliyuncs.com/pypi/packages/58/34/c57b951aecd0248845932c1cfc15721237c50e463f26b0536673bcb76f4f/huggingface_hub-0.14.1-py3-none-any.whl (224 kB)
+Collecting tokenizers!=0.11.3,<0.14,>=0.11.1
+  Downloading https://mirrors-ssl.aliyuncs.com/pypi/packages/4e/f2/017bf57106b845e31ef6179bf204042720a53629cf599ef9464da990e0e5/tokenizers-0.13.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (7.8 MB)
+Requirement already satisfied: requests in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (2.27.1)
+Requirement already satisfied: regex!=2019.12.17 in /opt/conda/lib/python3.8/site-packages (from transformers==4.28.0.dev0) (2022.3.15)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in /opt/conda/lib/python3.8/site-packages (from huggingface-hub<1.0,>=0.11.0->transformers==4.28.0.dev0) (4.1.1)
+Requirement already satisfied: fsspec in /opt/conda/lib/python3.8/site-packages (from huggingface-hub<1.0,>=0.11.0->transformers==4.28.0.dev0) (2022.2.0)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /opt/conda/lib/python3.8/site-packages (from packaging>=20.0->transformers==4.28.0.dev0) (3.0.7)
+Requirement already satisfied: certifi>=2017.4.17 in /opt/conda/lib/python3.8/site-packages (from requests->transformers==4.28.0.dev0) (2021.10.8)
+Requirement already satisfied: idna<4,>=2.5 in /opt/conda/lib/python3.8/site-packages (from requests->transformers==4.28.0.dev0) (3.3)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /opt/conda/lib/python3.8/site-packages (from requests->transformers==4.28.0.dev0) (2.0.12)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /opt/conda/lib/python3.8/site-packages (from requests->transformers==4.28.0.dev0) (1.26.8)
+Installing collected packages: tokenizers, huggingface-hub, transformers
+  Running setup.py develop for transformers
+Successfully installed huggingface-hub-0.14.1 tokenizers-0.13.3 transformers-4.28.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv

@@ -1,0 +1,49 @@
+Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
+Obtaining file:///mnt/nlp-ali/usr/guzhouhong/EasyLLM/installs/peft-install
+  Installing build dependencies: started
+  Installing build dependencies: still running...
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+    Preparing wheel metadata: started
+    Preparing wheel metadata: finished with status 'done'
+Collecting accelerate
+  Downloading accelerate-0.18.0-py3-none-any.whl (215 kB)
+Collecting torch>=1.13.0
+  Downloading torch-2.0.0-cp38-cp38-manylinux1_x86_64.whl (619.9 MB)
+Looking in indexes: https://mirrors-ssl.aliyuncs.com/pypi/simple, https://pypi.ngc.nvidia.com
+Obtaining file:///mnt/nlp-ali/usr/guzhouhong/EasyLLM/installs/peft-install
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+    Preparing wheel metadata: started
+    Preparing wheel metadata: finished with status 'done'
+Requirement already satisfied: numpy>=1.17 in /opt/conda/lib/python3.8/site-packages (from peft==0.3.0.dev0) (1.22.3)
+Requirement already satisfied: torch>=1.13.0 in /opt/conda/lib/python3.8/site-packages (from peft==0.3.0.dev0) (1.13.1+cu117)
+Collecting transformers
+  Downloading https://mirrors-ssl.aliyuncs.com/pypi/packages/d8/a7/a6ff727fd5d96d6625f4658944a2ae230f0c75743a9a117fbda013b03d3d/transformers-4.28.1-py3-none-any.whl (7.0 MB)
+Requirement already satisfied: psutil in /opt/conda/lib/python3.8/site-packages (from peft==0.3.0.dev0) (5.9.0)
+Requirement already satisfied: pyyaml in /opt/conda/lib/python3.8/site-packages (from peft==0.3.0.dev0) (6.0)
+Collecting accelerate
+  Downloading https://mirrors-ssl.aliyuncs.com/pypi/packages/e7/87/25dd46811431cfc5e8d6ba8c80758cb3131574b271fbf06cf1b691dba8d4/accelerate-0.18.0-py3-none-any.whl (215 kB)
+Requirement already satisfied: packaging>=20.0 in /opt/conda/lib/python3.8/site-packages (from peft==0.3.0.dev0) (21.3)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /opt/conda/lib/python3.8/site-packages (from packaging>=20.0->peft==0.3.0.dev0) (3.0.7)
+Requirement already satisfied: typing-extensions in /opt/conda/lib/python3.8/site-packages (from torch>=1.13.0->peft==0.3.0.dev0) (4.1.1)
+Requirement already satisfied: filelock in /opt/conda/lib/python3.8/site-packages (from transformers->peft==0.3.0.dev0) (3.6.0)
+Requirement already satisfied: requests in /opt/conda/lib/python3.8/site-packages (from transformers->peft==0.3.0.dev0) (2.27.1)
+Collecting huggingface-hub<1.0,>=0.11.0
+  Downloading https://mirrors-ssl.aliyuncs.com/pypi/packages/58/34/c57b951aecd0248845932c1cfc15721237c50e463f26b0536673bcb76f4f/huggingface_hub-0.14.1-py3-none-any.whl (224 kB)
+Requirement already satisfied: regex!=2019.12.17 in /opt/conda/lib/python3.8/site-packages (from transformers->peft==0.3.0.dev0) (2022.3.15)
+Collecting tokenizers!=0.11.3,<0.14,>=0.11.1
+  Downloading https://mirrors-ssl.aliyuncs.com/pypi/packages/4e/f2/017bf57106b845e31ef6179bf204042720a53629cf599ef9464da990e0e5/tokenizers-0.13.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (7.8 MB)
+Requirement already satisfied: tqdm>=4.27 in /opt/conda/lib/python3.8/site-packages (from transformers->peft==0.3.0.dev0) (4.63.0)
+Requirement already satisfied: fsspec in /opt/conda/lib/python3.8/site-packages (from huggingface-hub<1.0,>=0.11.0->transformers->peft==0.3.0.dev0) (2022.2.0)
+Requirement already satisfied: idna<4,>=2.5 in /opt/conda/lib/python3.8/site-packages (from requests->transformers->peft==0.3.0.dev0) (3.3)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /opt/conda/lib/python3.8/site-packages (from requests->transformers->peft==0.3.0.dev0) (1.26.8)
+Requirement already satisfied: certifi>=2017.4.17 in /opt/conda/lib/python3.8/site-packages (from requests->transformers->peft==0.3.0.dev0) (2021.10.8)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /opt/conda/lib/python3.8/site-packages (from requests->transformers->peft==0.3.0.dev0) (2.0.12)
+Installing collected packages: tokenizers, huggingface-hub, transformers, accelerate, peft
+  Running setup.py develop for peft
+Successfully installed accelerate-0.18.0 huggingface-hub-0.14.1 peft-0.3.0.dev0 tokenizers-0.13.3 transformers-4.28.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv

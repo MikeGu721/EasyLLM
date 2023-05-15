@@ -1,0 +1,4 @@
+Using pip 21.2.4 from /opt/conda/lib/python3.8/site-packages/pip (python 3.8)
+/opt/conda/lib/python3.8/site-packages/pip/_internal/commands/install.py:229: UserWarning: Disabling all use of wheels due to the use of --build-option / --global-option / --install-option.
+  cmdoptions.check_install_build_global(options)
+ERROR: Directory '.' is not installable. Neither 'setup.py' nor 'pyproject.toml' found.

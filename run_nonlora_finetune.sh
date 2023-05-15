@@ -11,7 +11,7 @@ export OUTPUT_DIR=./model/ifted_model
 
 export NUM_GPUS=3
 
-deepspeed --NUM_GPUS=8 nonlora-finetune.py \
+deepspeed --num_gpus=8 nonlora-finetune.py \
     --base_model $BASE_MODEL \
     --data_path $DATA_PATH \
     --output_dir $OUTPUT_DIR'/'$DATA_NAME'/'$BASE_MODEL \

@@ -15,6 +15,7 @@ pybind11
 six
 numpy
 rouge_score
+deepspeed
 openai
 gensim==3.8.2
 isort>=5.5.4
