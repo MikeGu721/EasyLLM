@@ -1,4 +1,5 @@
 /venv
+nohup.out
 model/download_model/*
 .idea
 __pycache__
