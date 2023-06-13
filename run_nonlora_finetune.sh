@@ -1,17 +1,14 @@
 export BASE_MODEL=decapoda-research/llama-7b-hf
-#export BASE_MODEL=THUDM/glm-10b-chinese
-#export BASE_MODEL=bigscience/bloomz-7b1
-#export BASE_MODEL=bigscience/bloomz-560m
 
 export DATA_PATH=./data/instruction_data/ift.data.json
 export DATA_NAME=sft-data
 export CACHE_DIR=./model/download_model
 
 export OUTPUT_DIR=./model/ifted_model
-
+export DEEPSPEED_STAGE=3
 export NUM_GPUS=3
 
-deepspeed --num_gpus=8 nonlora-finetune.py \
+deepspeed --num_gpus=$NUM_GPUS nonlora-finetune.py \
     --base_model $BASE_MODEL \
     --data_path $DATA_PATH \
     --output_dir $OUTPUT_DIR'/'$DATA_NAME'/'$BASE_MODEL \
@@ -23,4 +20,4 @@ deepspeed --num_gpus=8 nonlora-finetune.py \
     --val_set_size 2000 \
     --group_by_length \
     --cache_dir $CACHE_DIR \
-    --deepspeed ds_config.json
+    --deepspeed_stage $DEEPSPEED_STAGE
