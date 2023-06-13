@@ -29,7 +29,8 @@ def start_ift(base_model: str,
               wandb_log_model: str = '',
               resume_from_checkpoint: str = None,  # 需要读取参数的目录，而不是精确到文件
               prompt_template_name: str = 'gzh_prompter',
-              cache_dir: str = '.', ):
+              cache_dir: str = '.', 
+              deepspeed_stage: int=0):
     print('开始进行显卡设置')
     # 一些读取
     prompter = Prompter(prompt_template_name)
@@ -131,7 +132,14 @@ def start_ift(base_model: str,
             print(f"Checkpoint {checkpoint_name} 地址不存在")
         print(f'已读取{checkpoint_name}的模型')
 
-
+    if deepspeed_stage == 0:
+        ds_config_file = './ds_configs/ds_config_stage_0.json'
+    elif deepspeed_stage == 1:
+        ds_config_file = './ds_configs/ds_config_stage_1.json'
+    elif deepspeed_stage == 2:
+        ds_config_file = './ds_configs/ds_config_stage_2.json'
+    elif deepspeed_stage == 3:
+        ds_config_file = './ds_configs/ds_config_stage_3.json'
     # 设置Trainer
     transformer_args = transformers.TrainingArguments(per_device_train_batch_size=micro_batch_size,
                                                       gradient_accumulation_steps=gradient_accumulation_steps,
@@ -151,7 +159,8 @@ def start_ift(base_model: str,
                                                       ddp_find_unused_parameters=False if ddp else None,
                                                       group_by_length=group_by_length,
                                                       report_to='wandb' if use_wandb else None,
-                                                      run_name=wandb_run_name if use_wandb else None)
+                                                      run_name=wandb_run_name if use_wandb else None,
+                                                      deepspeed=ds_config_file)
     transformer_collator = transformers.DataCollatorForSeq2Seq(tokenizer, pad_to_multiple_of=8, return_tensors='pt',
                                                                padding=True)
     trainer = transformers.Trainer(model=model, train_dataset=train_data, eval_dataset=val_data, args=transformer_args,
