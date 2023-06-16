@@ -4,7 +4,6 @@ import fire
 import torch
 import transformers
 from datasets import load_dataset
-from peft import get_peft_model_state_dict, set_peft_model_state_dict
 from transformers.models.llama import LlamaTokenizer, LlamaForCausalLM
 from transformers import AutoTokenizer, AutoModelForCausalLM, BloomForCausalLM
 from prompter_setting.Prompter import Prompter
@@ -118,20 +117,6 @@ def start_ift(base_model: str,
         model.model_parallel = True
     print('模型准备完毕')
 
-    # 读取之前的模型
-    if resume_from_checkpoint:
-        checkpoint_name = os.path.join(resume_from_checkpoint, "pytorch_model.bin")
-        if not os.path.exists(checkpoint_name):  # 只读取旁路的参数
-            checkpoint_name = os.path.join(resume_from_checkpoint, "adapter_model.bin")
-            resume_from_checkpoint = False
-        if os.path.exists(checkpoint_name):
-            print(f"从{checkpoint_name}继续开始ift")
-            adapters_weights = torch.load(checkpoint_name)
-            model = set_peft_model_state_dict(model, adapters_weights)
-        else:
-            print(f"Checkpoint {checkpoint_name} 地址不存在")
-        print(f'已读取{checkpoint_name}的模型')
-
     if deepspeed_stage == 0:
         ds_config_file = './ds_configs/ds_config_stage_0.json'
     elif deepspeed_stage == 1:
@@ -166,9 +151,6 @@ def start_ift(base_model: str,
     trainer = transformers.Trainer(model=model, train_dataset=train_data, eval_dataset=val_data, args=transformer_args,
                                    data_collator=transformer_collator)
     model.config.use_cache = False
-    old_state_dict = model.state_dict
-    model.state_dict = (lambda self, *_, **__: get_peft_model_state_dict(self, old_state_dict())).__get__(model,
-                                                                                                          type(model))
     print('完成Trainer设置')
 
     # Start Training
