@@ -48,40 +48,54 @@ TORCH_CUDA_ARCH_LIST="8.6" DS_BUILD_CPU_ADAM=1 DS_BUILD_UTILS=1 pip install . --
 ### Megatron
 - 目前跑通的是单机多卡，暂时还没条件搞多机多卡
 - `sh run_pretrain_gpt.sh`
+- 多机：TODO: will be updated
 
 ### Megatron-DeepSpeed
 - 目前跑通的是单机多卡，暂时还没条件搞多机多卡
 - `sh run_pretrain_gpt_deepspeed.sh`
+- 多机：TODO: will be updated
 
+### Continue Pretrain
+- TODO: will be updated
 
-## Instruction Finetuning
-- 将预训练好的结果拿来做ift：
+### 将预训练好的参数转换为huggingface格式：
 - `sh run_convert_megatron_2_hf.sh`
 
-### SFT
-- 此处的输出带着后缀 not_cleaned，需要人工清洗一下数据，不然数据太脏，直接调用api去迭代生成太浪费钱
-- `sh run_self_instruct.sh`
-- 将生成的sft数据转化为可以直接灌入模型的ift数据：`sh run_sft_2_ift.sh`
+## Instruction Finetuning
 
 ### Non-LoRA IFT
 - Windows上无法运行bitsandbytes包，所以不能用int8设置进行ift
 - `sh run_lora_finetune.sh`
+- 多机：`sh run_mpi_lora_finetune.sh`
 
 ### LoRA IFT
 - Windows上无法运行bitsandbytes包，所以不能用int8设置进行ift
-- Bloom 没有['q_proj', 'v_proj']这两个层，所以我选择在['query_key_value']这个层设置旁路
+- Bloom 没有['q_proj', 'v_proj']这两个层，所以可以选择在['query_key_value']这个层设置旁路
 - `sh run_lora_finetune.sh`
+- 多机：`sh run_mpi_nonlora_finetune.sh`
+
+### 利用chatGPT生成finetune数据（这是个很古老的技术了，纯粹是写了不舍得扔掉，所以还放在这里）
+- 此处的输出带着后缀 not_cleaned，需要人工清洗一下数据，不然数据太脏，直接调用api去迭代生成太浪费钱
+- `sh run_self_instruct.sh`
+- 将生成的sft数据转化为可以直接灌入模型的ift数据：`sh run_sft_2_ift.sh`
 
 ## Test and Deployment
 ### Merge Lora Model Weights
+- 将lora weight和模型参数合并可以提高推理速度
 - `sh merge.sh`
 
+### Inference Speedup
+- TODO: will be updated
+
 ### Test&Depolyment
+- 平平无奇的部署
 - `sh run_deploy.sh`
 
-# 关于在Windows系统上搞预训练的一些无奈
-- Windows上跑DeepSpeed极度困难，此处耗了我很长的时间，建议还是不要搞了，反正我是没搞通
-- Windows不支持分布式，所以Megatron训练里的distributed-backend要设置gloo而不是nccl——但还是有很多地方会有bug，所以再次建议不要在windows上跑预训练
+## RLHF
+- TODO: will be updated
 
-# 待更新
-- 读取其他模型的参数继续做预训练
+# TODO:
+- [ ] RLHF
+- [ ] continue pretraining
+- [ ] inference speedup
+- [ ] 多机pretrain
