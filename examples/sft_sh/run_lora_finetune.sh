@@ -1,4 +1,4 @@
-export BASE_MODEL=decapoda-research/llama-30b-hf
+export BASE_MODEL=decapoda-research/llama-13b-hf
 
 export DATA_PATH=./data/instruction_data/ift.data.json
 export DATA_NAME=sft-data
@@ -7,15 +7,9 @@ export CACHE_DIR=NONE
 export OUTPUT_DIR=./model/ifted_model
 export DEEPSPEED_STAGE=3
 
-DISTRIBUTED_ARGS="\
-        --nproc_per_node=$GPU_NUM \
-        --nnodes=$WORLD_SIZE \
-        --node_rank=$RANK \
-        --master_addr=$MASTER_ADDR \
-        --master_port=$MASTER_PORT \
-        "
+export NUM_GPUS=$GPU_NUM
 
-python -m torch.distributed.launch $DISTRIBUTED_ARGS lora-finetune.py \
+deepspeed --num_gpus=$NUM_GPUS lora-finetune.py \
     --base_model $BASE_MODEL \
     --data_path $DATA_PATH \
     --output_dir $OUTPUT_DIR'/'$DATA_NAME'/'$BASE_MODEL \
