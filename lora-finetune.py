@@ -29,6 +29,7 @@ def start_ift(base_model: str,
               train_on_inputs: bool = False,
               group_by_length: bool = False,
               wandb_project: str = '',
+              load_in_8bit: bool=False,
               wandb_run_name: str = '',
               wandb_watch: str = '',
               wandb_log_model: str = '',
@@ -106,15 +107,15 @@ def start_ift(base_model: str,
 
     # 准备模型
     if 'llama' in base_model.lower():
-        model = LlamaForCausalLM.from_pretrained(base_model, cache_dir=cache_dir, load_in_8bit=False,
+        model = LlamaForCausalLM.from_pretrained(base_model, cache_dir=cache_dir, load_in_8bit=load_in_8bit,
                                                  device_map=device_map, )
         print('Using Llama')
     elif 'bloom' in base_model.lower():
-        model = BloomForCausalLM.from_pretrained(base_model, cache_dir=cache_dir, load_in_8bit=False,
+        model = BloomForCausalLM.from_pretrained(base_model, cache_dir=cache_dir, load_in_8bit=load_in_8bit,
                                                  device_map=device_map, )
         print('Using Bloom')
     else:
-        model = AutoModelForCausalLM.from_pretrained(base_model, cache_dir=cache_dir, load_in_8bit=False,
+        model = AutoModelForCausalLM.from_pretrained(base_model, cache_dir=cache_dir, load_in_8bit=load_in_8bit,
                                                      device_map=device_map, )
     print(model)
     # model = PeftModel.from_pretrained(model, PEFT_MODEL)

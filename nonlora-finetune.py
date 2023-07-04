@@ -22,6 +22,7 @@ def start_ift(base_model: str,
               val_set_size: int = 2000,
               train_on_inputs: bool = False,
               group_by_length: bool = False,
+              load_in_8bit: bool=False,
               wandb_project: str = '',
               wandb_run_name: str = '',
               wandb_watch: str = '',
@@ -100,15 +101,15 @@ def start_ift(base_model: str,
 
     # 准备模型
     if 'llama' in base_model.lower():
-        model = LlamaForCausalLM.from_pretrained(base_model, cache_dir=cache_dir, load_in_8bit=False,
+        model = LlamaForCausalLM.from_pretrained(base_model, cache_dir=cache_dir, load_in_8bit=load_in_8bit,
                                                  device_map=device_map, )
         print('Using Llama')
     elif 'bloom' in base_model.lower():
-        model = BloomForCausalLM.from_pretrained(base_model, cache_dir=cache_dir, load_in_8bit=False,
+        model = BloomForCausalLM.from_pretrained(base_model, cache_dir=cache_dir, load_in_8bit=load_in_8bit,
                                                  device_map=device_map, )
         print('Using Bloom')
     else:
-        model = AutoModelForCausalLM.from_pretrained(base_model, cache_dir=cache_dir, load_in_8bit=False,
+        model = AutoModelForCausalLM.from_pretrained(base_model, cache_dir=cache_dir, load_in_8bit=load_in_8bit,
                                                      device_map=device_map, )
     # model = prepare_model_for_int8_training(model)  # 和 from_pretrained 8bt的参数保持一致
     # 模型并行
