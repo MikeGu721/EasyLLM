@@ -187,6 +187,9 @@ def start_ift(base_model: str,
     print('模型训练完成')
 
     # 保存模型参数
+    trainer.save_state()
+    trainer.save_model()
+    # 保存模型参数
     model.save_pretrained(output_dir)
     print(f'已保存模型参数至：{output_dir}')
 
